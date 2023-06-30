@@ -1,0 +1,372 @@
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none; }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    animation-name: NewPage;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1; }
+
+    @keyframes NewPage {
+      0% {
+        opacity: 0;
+        scale: 98%;   }
+        100% {
+          opacity: 1;
+          scale: 100%;   }
+}
+
+.clickable {
+  background: #9147f6;
+  color: white;
+  border-radius: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.2rem; }
+
+  .clickable-text {
+    color: #9147f6;
+    border-radius: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    font-size: 1.2rem; }
+
+    .clickable-outlined {
+      color: #9147f6;
+      border-radius: 5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      border: 1.5px solid gray;
+      font-size: 1.2rem; }
+
+      span.ripple {
+        position: absolute;
+        border-radius: 50%;
+        transform: scale(0);
+        animation: ripple 600ms linear;
+        background-color: rgba(128, 128, 128, 0.3); }
+
+        .container-filled {
+          background: #eee3fe; }
+
+          .container-outlined {
+            border: 1.5px solid gray; }
+
+            .Alert-Dialog-Container {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: rgba(131, 117, 152, 0.5);
+              backdrop-filter: blur(10px);
+              z-index: 5;
+              transition: backdrop-filter 0.5s ease; }
+              .Alert-Dialog-Container .Alert-Dialog {
+                min-width: 20vw;
+                max-width: 30vw;
+                height: fit-content;
+                background: #feeee3;
+                border-radius: 3em;
+                padding: 2em 3em;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: center;
+                gap: 1.5em;
+                animation-name: bounce;
+                animation-duration: 0.75s;
+                animation-timing-function: ease;
+                animation-iteration-count: 1; }
+                .Alert-Dialog-Container .Alert-Dialog .Alert-Head {
+                  font-size: 2rem;
+                  color: #f69147; }
+                  .Alert-Dialog-Container .Alert-Dialog .Alert-Description {
+                    font-weight: lighter;
+                    font-size: 1.2rem;
+                    text-align: left;
+                    color: #8c827a; }
+                    .Alert-Dialog-Container .Alert-Dialog .Alert-Nav-Area {
+                      width: 100%;
+                      height: fit-content;
+                      display: flex;
+                      align-items: center;
+                      justify-content: right; }
+                      .Alert-Dialog-Container .Alert-Dialog .Alert-Nav-Area .Alert-Button-Area {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: fit-content;
+                        height: fit-content;
+                        gap: 1em; }
+                        .Alert-Dialog-Container .Alert-Dialog .Alert-Nav-Area .Alert-Button-Area .Alert-clickable-text {
+                          color: #9147f6;
+                          border-radius: 5em;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          border: none;
+                          cursor: pointer;
+                          overflow: hidden;
+                          position: relative;
+                          padding: 0.5em 1em;
+                          font-size: 1.2rem; }
+
+.Radio-Button {
+  width: fit-content;
+  height: fit-content; }
+
+  .Radio-Button input[type="radio"] {
+    display: none; }
+
+    .Radio-Button input[type="radio"] + .Radio-Label {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer; }
+
+      .Radio-Button input[type="radio"] + .Radio-Label .Radio-Hover-Indicator {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+
+        .Radio-Button:hover input[type="radio"] + .Radio-Label .Radio-Hover-Indicator {
+          background: #eee3fe; }
+
+          .Radio-Button input[type="radio"] + .Radio-Label .Radio-Hover-Indicator .Radio-Indicator-Outer {
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            border: 2px solid #9147f6;
+            display: flex;
+            align-items: center;
+            justify-content: center; }
+
+            .Radio-Button input[type="radio"]:checked + .Radio-Label .Radio-Hover-Indicator .Radio-Indicator-Outer .Radio-Indicator-Inner {
+              width: 12px;
+              height: 12px;
+              border-radius: 15px;
+              background: #9147f6;
+              animation: radio-bounce;
+              animation-duration: 0.2s;
+              animation-timing-function: ease;
+              animation-iteration-count: 1; }
+
+              @keyframes radio-bounce {
+                0% {
+                  scale: 0%;   }
+                  100% {
+                    scale: 100%;   }
+}
+
+.Switch {
+  width: fit-content;
+  height: fit-content; }
+
+  .Switch input[type="checkbox"] {
+    display: none; }
+
+    .Switch input[type="checkbox"] + .Switch-Label {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background: #eee3fe;
+      padding: 10px;
+      border-radius: 0.75em;
+      cursor: pointer; }
+
+      .Switch input[type="checkbox"]:checked + .Switch-Label {
+        color: #9147f6; }
+
+        .Switch input[type="checkbox"] + .Switch-Label .Switch-Main {
+          width: 40px;
+          height: 25px;
+          border-radius: 20px;
+          background: #827a8c;
+          display: flex;
+          align-items: center;
+          position: relative;
+          transition: all 0.2s ease; }
+
+          .Switch input[type="checkbox"]:checked + .Switch-Label .Switch-Main {
+            background: #9147f6; }
+
+            .Switch input[type="checkbox"] + .Switch-Label .Switch-Main .Switch-Inner {
+              position: absolute;
+              left: 2;
+              width: 20px;
+              height: 20px;
+              border-radius: 20px;
+              background: white;
+              transition: all 0.3s ease; }
+
+              .Switch input[type="checkbox"]:checked + .Switch-Label .Switch-Main .Switch-Inner {
+                position: absolute;
+                background: #d6fba3;
+                left: 17; }
+
+                @keyframes bounce {
+                  0% {
+                    scale: 0%;   }
+                    50% {
+                      scale: 110%;   }
+                      100% {
+                        scale: 100%;   }
+}
+
+.Top-App-Bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background: #eee3fe; }
+  .Top-App-Bar .Icon-Container {
+    width: 40px;
+    height: 40px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: black; }
+    .Top-App-Bar .Icon-Container:hover {
+      background: #9147f6;
+      color: #d6fba3; }
+      .Top-App-Bar .Top-App-Bar-Title {
+        font-size: larger;
+        font-weight: bold; }
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;   }
+}
+
+@font-face {
+  font-family: 'Material Symbols Rounded';
+  font-style: normal;
+  font-weight: 400;
+  src: url("syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDJ_vb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rIelXxc.woff2") format('woff2'); }
+
+  .material-symbols-rounded-20 {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    margin: 0.75em;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased; }
+
+    .material-symbols-rounded-24 {
+      font-family: 'Material Symbols Rounded';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      margin: 0.75em;
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased; }
+
+      .material-symbols-rounded-30 {
+        font-family: 'Material Symbols Rounded';
+        font-weight: bold;
+        font-style: normal;
+        font-size: 30px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        margin: 0.75em;
+        font-feature-settings: 'liga';
+        -webkit-font-smoothing: antialiased; }
+
+        .material-symbols-rounded-40 {
+          font-family: 'Material Symbols Rounded';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 40px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          margin: 0.75em;
+          font-feature-settings: 'liga';
+          -webkit-font-smoothing: antialiased; }
+
+          .material-symbols-rounded-48 {
+            font-family: 'Material Symbols Rounded';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 48px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            margin: 0.75em;
+            font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased; }

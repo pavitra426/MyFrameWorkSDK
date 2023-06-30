@@ -1,0 +1,496 @@
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+@function tone($color, $percentage) {
+    @return mix(gray, $color, $percentage);
+}
+
+@function toneAlpha($color, $percentage) {
+    @return mix(rgba(128, 128, 128, 0.8), $color, $percentage);
+}
+
+@function matcher($color, $Color2) {
+    @return mix($color, $Color2, 65%);
+}
+
+$ColorPrimary: rgba(145, 71, 246, 1);
+$ColorPrimaryDimIn: rgba(145, 71, 246, 0.2);
+$ColorOnPrimary: tint($ColorPrimary, 100%);
+$ColorPrimaryContainer: tint($ColorPrimary, 85%);
+$ColorOnPrimaryContainer: tone($ColorPrimary, 90%);
+$ColorPrimaryDim: toneAlpha($ColorPrimaryDimIn, 50%);
+
+$ColorSecondary: rgba(246, 145, 71, 1);
+$ColorOnSecondary: tint($ColorSecondary, 100%);
+$ColorSecondaryContainer: tint($ColorSecondary, 85%);
+$ColorOnSecondaryContainer: tone($ColorSecondary, 90%);
+
+$ColorTertiary: rgba(71, 246, 145, 1);
+$ColorOnTertiary: tint($ColorTertiary, 100%);
+$ColorTertiaryContainer: tint($ColorTertiary, 85%);
+$ColorOnTertiaryContainer: tone($ColorTertiary, 90%);
+
+$ColorComplementary: rgba(172, 246, 71, 1);
+$ColorOnComplementary: tint($ColorComplementary, 100%);
+$ColorComplementaryContainer: tint($ColorComplementary, 85%);
+$ColorOnComplementaryContainer: tone($ColorComplementary, 90%);
+$ColorComplementaryMatcher: tint($ColorComplementary, 50%);
+
+$ColorSurface: tint($ColorPrimary, 98%);
+
+
+* {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    animation-name: NewPage;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes NewPage {
+    0% {
+        opacity: 0;
+        scale: 98%;
+    }
+    100% {
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+///   Clickable
+
+.clickable {
+    background: $ColorPrimary;
+    color: $ColorOnPrimary;
+    border-radius: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-size: 1.2rem;
+}
+
+.clickable-text {
+    color: $ColorPrimary;
+    border-radius: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    font-size: 1.2rem;
+}
+
+.clickable-outlined {
+    color: $ColorPrimary;
+    border-radius: 5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    border: 1.5px solid gray;
+    font-size: 1.2rem;
+}
+
+span.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 600ms linear;
+    background-color: rgba(128, 128, 128, 0.3);
+}
+
+
+/// Container
+
+.container-filled {
+    background: $ColorPrimaryContainer;
+}
+
+.container-outlined {
+    border: 1.5px solid gray;
+}
+
+
+/// Alert Dialog
+
+
+.Alert-Dialog-Container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $ColorPrimaryDim;
+    backdrop-filter: blur(10px);
+    z-index: 5;
+    transition: backdrop-filter 0.5s ease;
+
+
+    .Alert-Dialog {
+        min-width: 20vw;
+        max-width: 30vw;
+        height: fit-content;
+        background: $ColorSecondaryContainer;
+        border-radius: 3em;
+        padding: 2em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        gap: 1.5em;
+        animation-name: bounce;
+        animation-duration: 0.75s;
+        animation-timing-function: ease;
+        animation-iteration-count: 1;
+
+        .Alert-Head {
+            font-size: 2rem;
+            color: $ColorSecondary;
+        }
+        
+        .Alert-Description {
+            font-weight: lighter;
+            font-size: 1.2rem;
+            text-align: left;
+            color: $ColorOnSecondaryContainer;
+        }
+        
+        
+        .Alert-Nav-Area {
+            width: 100%;
+            height: fit-content;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+
+            .Alert-Button-Area {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
+                height: fit-content;
+                gap: 1em;
+
+
+                .Alert-clickable-text {
+                    color: $ColorPrimary;
+                    border-radius: 5em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border: none;
+                    cursor: pointer;
+                    overflow: hidden;
+                    position: relative;
+                    padding: 0.5em 1em;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+
+/// Radio Button
+
+.Radio-Button {
+    width: fit-content;
+    height: fit-content;
+}
+
+.Radio-Button input[type="radio"] {
+    display: none;
+}
+
+.Radio-Button input[type="radio"] + .Radio-Label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.Radio-Button input[type="radio"] + .Radio-Label .Radio-Hover-Indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Radio-Button:hover input[type="radio"] + .Radio-Label .Radio-Hover-Indicator {
+    background: $ColorPrimaryContainer;
+}
+
+.Radio-Button input[type="radio"] + .Radio-Label .Radio-Hover-Indicator .Radio-Indicator-Outer {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: 2px solid $ColorPrimary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Radio-Button input[type="radio"]:checked + .Radio-Label .Radio-Hover-Indicator .Radio-Indicator-Outer .Radio-Indicator-Inner {
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    background: $ColorPrimary;
+    animation: radio-bounce;
+    animation-duration: 0.2s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+}
+
+@keyframes radio-bounce {
+    0% {
+        scale: 0%;
+    }
+    100%{
+        scale: 100%;
+    }
+}
+
+/// Switch
+
+.Switch {
+    width: fit-content;
+    height: fit-content;
+}
+
+.Switch input[type="checkbox"] {
+    display: none;
+}
+
+.Switch input[type="checkbox"] + .Switch-Label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: $ColorPrimaryContainer;
+    padding: 10px;
+    border-radius: 0.75em;
+    cursor: pointer;
+}
+
+.Switch input[type="checkbox"]:checked + .Switch-Label {
+    color: $ColorPrimary;
+}
+
+.Switch input[type="checkbox"] + .Switch-Label .Switch-Main {
+    width: 40px;
+    height: 25px;
+    border-radius: 20px;
+    background: $ColorOnPrimaryContainer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.Switch input[type="checkbox"]:checked + .Switch-Label .Switch-Main {
+    background: $ColorPrimary;
+}
+
+.Switch input[type="checkbox"] + .Switch-Label .Switch-Main .Switch-Inner {
+    position: absolute;
+    left: 2;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.Switch input[type="checkbox"]:checked + .Switch-Label .Switch-Main .Switch-Inner {
+    position: absolute;
+    background: $ColorComplementaryMatcher;
+    left: 17;
+}
+
+@keyframes bounce {
+    0% {
+        scale: 0%;
+    }
+    50% {
+        scale: 110%;
+    }
+    100%{
+        scale: 100%;
+    }
+}
+
+/// Top-App-Bar
+
+.Top-App-Bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    background: $ColorPrimaryContainer;
+
+    .Icon-Container {
+        width: 40px;
+        height: 40px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: black;
+    }
+
+    .Icon-Container:hover {
+        background: $ColorPrimary;
+        color: $ColorComplementaryMatcher;
+    }
+
+    .Top-App-Bar-Title {
+        font-size: larger;
+        font-weight: bold;
+    }
+}
+
+/// Other
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    font-style: normal;
+    font-weight: 400;
+    src: url("syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDJ_vb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOc7TOVpeRL2w5rwZu2rIelXxc.woff2") format('woff2');
+}
+
+.material-symbols-rounded-20 {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    margin: 0.75em;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-rounded-24 {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    margin: 0.75em;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-rounded-30 {
+    font-family: 'Material Symbols Rounded';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 30px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    margin: 0.75em;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-rounded-40 {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 40px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    margin: 0.75em;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-rounded-48 {
+    font-family: 'Material Symbols Rounded';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    margin: 0.75em;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
