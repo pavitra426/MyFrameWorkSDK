@@ -1,0 +1,46 @@
+<Container
+	width="match-parent"
+	height="match-parent"
+	id="start-here"
+	name="main"
+	gap="5dp"
+	>
+
+	<Include name="topappbar"/>
+
+	<Clickable
+		width="200dp"
+		height="fit-content"
+		text="Clickable"
+		id="c1"
+	/>
+	<Radio-Button
+			text="Radio Button"
+			value="Radio Value"
+			group="r1"
+	/>
+	<Clickable
+		type="text"
+		width="fit-content"
+		height="fit-content"
+		text="Clickable 2"
+		id="c2"
+		action-type="alert dialog"
+	>
+		<Alert-Dialog
+			title="Alert 2"
+			description="Hello 2 !!!!"
+			button-list="Cancel, OK"
+		/>
+	</Clickable>
+	<Radio-Button
+			text="Radio Button 2"
+			value="Radio Value 2"
+			group="r1"
+	/>
+	<Switch
+			text="Switch 1"
+			value="Switch Value 1"
+			group="s1"
+	/>
+</Container>

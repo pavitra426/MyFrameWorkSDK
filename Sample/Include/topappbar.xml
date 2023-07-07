@@ -1,0 +1,9 @@
+<Include>
+    <Container>
+        <Top-App-Bar
+            title="App Title Here"
+            forward-icon="arrow_back"
+            tailing-icon="more_vert"
+        />
+    </Container>
+</Include>
